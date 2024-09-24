@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+asyncpg
+SQLAlchemy
+alembic
+pydantic
+python-jose
+requests
+httpx
+passlib[bcrypt]  # Para hashing de contraseñas
+psycopg[binary]  # Controlador PostgreSQL para SQLAlchemy
+pydantic-settings
+python-dotenv
+python-multipart

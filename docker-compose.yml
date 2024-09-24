@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: pronotez
+      POSTGRES_PASSWORD: pass1234
+      POSTGRES_DB: task_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  web:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/POSTGRES_DB
+      - SECRET_KEY=secret_key_value
+      - OPENWEATHER_API_KEY=d806bb7da2fd3530eb4face0e3390eb2    
+    networks:
+      - app-network
+    volumes:
+      - .:/app
+    command: >
+      /bin/sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
