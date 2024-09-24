@@ -1,0 +1,193 @@
+{
+    "info": {
+      "name": "Proyecto Task",
+      "_postman_id": "12345678-1234-1234-1234-123456789012",
+      "description": "Colección para probar los endpoints del Proyecto Task.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Obtener Token",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"user1\",\n    \"password\": \"pass1234\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/token",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "token"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Registrar Usuario",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"nuevo_usuario\",\n    \"password\": \"contraseña_segura\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/register/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "register"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Crear Tarea",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"task_name\": \"Comprar alimentos\",\n    \"description\": \"Comprar frutas y vegetales\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/tasks/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "tasks"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Obtener Todas las Tareas",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:8000/tasks/",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "tasks"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Actualizar Tarea",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"task_name\": \"Comprar alimentos actualizada\",\n    \"description\": \"Comprar frutas y vegetales frescos\",\n    \"status\": \"completed\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8000/tasks/{task_id}",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "tasks",
+              "{task_id}"
+            ],
+            "variable": [
+              {
+                "key": "task_id",
+                "value": "12345678-1234-1234-1234-123456789012"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Eliminar Tarea",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:8000/tasks/{task_id}",
+            "protocol": "http",
+            "host": [
+              "localhost"
+            ],
+            "port": "8000",
+            "path": [
+              "tasks",
+              "{task_id}"
+            ],
+            "variable": [
+              {
+                "key": "task_id",
+                "value": "12345678-1234-1234-1234-123456789012"
+              }
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
