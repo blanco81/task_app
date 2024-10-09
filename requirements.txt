@@ -8,7 +8,7 @@ python-jose
 requests
 httpx
 passlib[bcrypt]  # Para hashing de contraseñas
-psycopg[binary]  # Controlador PostgreSQL para SQLAlchemy
+psycopg2[binary]  # Controlador PostgreSQL para SQLAlchemy
 pydantic-settings
 python-dotenv
 python-multipart
