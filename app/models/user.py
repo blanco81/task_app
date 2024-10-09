@@ -11,6 +11,5 @@ class User(Base):
     username = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
     tasks = relationship('Task', back_populates='user')
-    #tasks = relationship('Task', backref='user', cascade="all, delete-orphan")
     
     
